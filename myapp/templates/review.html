@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Reviews</title>
+</head>
+<body>
+    <h2>Leave a Review</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Reviews</h2>
+    {% for review in reviews %}
+        <div>
+            <strong>{{ review.name }}</strong> ({{ review.rating }} Stars)
+            <p>{{ review.comment }}</p>
+            <small>{{ review.created_at }}</small>
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>

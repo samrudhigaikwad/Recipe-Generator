@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Smart Recipe Generator</title>
+    <style>
+     body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #3a3a3a, #707070);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Adding foodie-themed background overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/food.png'), 
+                radial-gradient(circle, rgba(58, 58, 58, 0.3) 10%, rgba(112, 112, 112, 0.3) 90%);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+
+        h2 {
+            font-size: 32px;
+            color: #c8e6c9;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .category-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.2);
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            border-radius: 15px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+        }
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .category {
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .category img {
+            width: 24px;
+            height: 24px;
+        }
+        .category:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19); /* Slightly deeper hover effect */
+            transform: scale(1.1);
+            box-shadow: 6px 6px 15px rgba(0,0,0,0.4);
+        }
+      h2 {
+    font-size: 32px;
+    background: linear-gradient(135deg, #ffffff, #d9d9d9); /* Soft white gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 12px rgba(255, 255, 255, 0.6); /* Light glow effect */
+    
+    /* Blackish background wrapper */
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 12px;
+    position: relative;
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Blackish background */
+    border-radius: 12px;
+    z-index: -1;
+}
+
+/* Optional: Add a hover effect for a subtle glow */
+h2:hover {
+    text-shadow: 2px 2px 12px rgba(255, 255, 255, 0.6);
+}
+
+
+
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <div class="category-container">
+        <h2><img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Food Icon">Craving Something Delicious? Pick a Category!</h2><br>
+        <div class="category-list">
+            <a href="{% url 'recipe_category' 'breakfast' %}" class="category">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Breakfast Icon"> Breakfast
+            </a>
+            <a href="{% url 'recipe_category' 'lunch' %}" class="category">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921803.png" alt="Lunch Icon"> Lunch
+            </a>
+            <a href="{% url 'recipe_category' 'dinner' %}" class="category">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921805.png" alt="Dinner Icon"> Dinner
+            </a>
+            <a href="{% url 'recipe_category' 'dessert' %}" class="category">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921818.png" alt="Dessert Icon"> Dessert
+            </a>
+            <a href="{% url 'recipe_category' 'snacks' %}" class="category">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921826.png" alt="Snacks Icon"> Snacks
+            </a>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

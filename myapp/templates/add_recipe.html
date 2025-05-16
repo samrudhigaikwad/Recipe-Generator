@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <style>
+        /* Dark Theme Gradient Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3a3a3a, #707070);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Semi-transparent form container */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            margin-top:560px;
+            border-radius: 15px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+            width: 50%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #c8e6c9;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        /* Submit Button with Orange-Red Gradient */
+        button {
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            transform: scale(1.05);
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'header.html' %}
+    
+    <div class="form-container">
+        <h2>Add a New Recipe</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                {% for value, label in categories %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="subcategory">Veg/Non-Veg:</label>
+            <select id="subcategory" name="subcategory" required>
+                {% for value, label in subcategories %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="short_description">Short Description:</label>
+            <input type="text" id="short_description" name="short_description" maxlength="300">
+
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" name="ingredients" required></textarea>
+
+            <label for="instructions">Instructions:</label>
+            <textarea id="instructions" name="instructions" required></textarea>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <button type="submit">Add Recipe</button>
+        </form>
+    </div>
+
+</body>
+</html>
