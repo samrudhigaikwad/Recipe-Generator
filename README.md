@@ -99,9 +99,3 @@ Open `http://127.0.0.1:8000/` in your browser to view the app.
 Developed by **Samruddhi Gaikwad with our team** as part of Team project.
 !
 
-```
-
----
-
-Would you like me to also create a `requirements.txt` file for your project based on its contents?
-```
